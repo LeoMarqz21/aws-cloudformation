@@ -64,7 +64,7 @@
               }
           }
       },
-      "EC2VA58LID": {
+      "EBSForEc2": {
           "Type": "AWS::EC2::VolumeAttachment",
           "Properties": {
               "VolumeId": {
