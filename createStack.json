@@ -67,6 +67,7 @@
       "EBSForEc2": {
           "Type": "AWS::EC2::VolumeAttachment",
           "Properties": {
+              "Device":"/dev/sdh",
               "VolumeId": {
                   "Ref": "DiskEBS"
               },
