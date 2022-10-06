@@ -1,0 +1,84 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Metadata": {
+      "AWS::CloudFormation::Designer": {
+          "e9be9ff4-4ae6-4ea7-b2f3-26312b750044": {
+              "size": {
+                  "width": 60,
+                  "height": 60
+              },
+              "position": {
+                  "x": 390,
+                  "y": 110
+              },
+              "z": 0,
+              "embeds": []
+          },
+          "2f7cad44-42e9-485a-97dc-7810f3e2e29a": {
+              "size": {
+                  "width": 60,
+                  "height": 60
+              },
+              "position": {
+                  "x": 500,
+                  "y": 110
+              },
+              "z": 0,
+              "embeds": []
+          },
+          "6aae4653-8db6-44a2-8529-b0316d520762": {
+              "source": {
+                  "id": "2f7cad44-42e9-485a-97dc-7810f3e2e29a"
+              },
+              "target": {
+                  "id": "e9be9ff4-4ae6-4ea7-b2f3-26312b750044"
+              },
+              "z": 1
+          }
+      }
+  },
+  "Resources": {
+      "MyServerWebLinux": {
+          "Type": "AWS::EC2::Instance",
+          "Properties": {
+              "InstanceType": "t2.nano",
+              "ImageId": "ami-026b57f3c383c2eec",
+              "AvailabilityZone": "us-east-1"
+          },
+          "Metadata": {
+              "AWS::CloudFormation::Designer": {
+                  "id": "e9be9ff4-4ae6-4ea7-b2f3-26312b750044"
+              }
+          }
+      },
+      "DiskEBS": {
+          "Type": "AWS::EC2::Volume",
+          "Properties": {
+              "AvailabilityZone": "us-east-1",
+              "Size": "5",
+              "VolumeType": "gp2"
+          },
+          "Metadata": {
+              "AWS::CloudFormation::Designer": {
+                  "id": "2f7cad44-42e9-485a-97dc-7810f3e2e29a"
+              }
+          }
+      },
+      "EC2VA58LID": {
+          "Type": "AWS::EC2::VolumeAttachment",
+          "Properties": {
+              "VolumeId": {
+                  "Ref": "DiskEBS"
+              },
+              "InstanceId": {
+                  "Ref": "MyServerWebLinux"
+              }
+          },
+          "Metadata": {
+              "AWS::CloudFormation::Designer": {
+                  "id": "6aae4653-8db6-44a2-8529-b0316d520762"
+              }
+          }
+      }
+  }
+}
